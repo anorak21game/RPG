@@ -1,1 +1,1 @@
-document.body.innerHTML = "Anorak 21 Game";
+document.body.innerHTML = "Anorak21 RPG";
