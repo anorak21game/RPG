@@ -1,0 +1,1 @@
+document.body.innerHTML = "Anorak 21 Game";
