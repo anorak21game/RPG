@@ -1,1 +1,1 @@
-document.body.innerHTML = "Anorak21 RPG";
+document.body.innerHTML = "Anorak21 RPG - Push Test";
