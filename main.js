@@ -1,1 +1,0 @@
-document.body.innerHTML = "Anorak21 RPG";
