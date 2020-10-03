@@ -1,22 +1,58 @@
-/* Setzt die Hintergrundfarbe */
+// Setzt die Hintergrundfarbe
 body {
     background-color: #96ffc1;
 }
 
 .Avatar {
-    /* Reduziert das PNG auf 256px x 256px */
+    // Reduziert das PNG auf 256px x 256px
     width: 256px;
     height: 256px;
-    /* Alles andere von dem PNG wird ausgeblendet */
+    // Alles andere von dem PNG wird ausgeblendet
     overflow: hidden;
+    // Wichtig!
+    position: relative;
+    // Gibt an wo sich der Avatar im Bild befindet
+    margin: 0 auto;
 }
 
 .Lars {
-    /* 1s beschreibt die Keyframezeit, steps() beschreibt in wievielen Sprüngen und infinite läst die Animation wiederholen*/
+    // 1s beschreibt die Keyframezeit, steps() beschreibt in wievielen Sprüngen und infinite läst die Animation wiederholen
     animation: moveAvatar 1s steps(8) infinite;
+    // Wichtig!
+    position: absolute;
 }
 
-/* Dieses Keyframe bewegt wiederholend estwas nach links */
+.Lenny {
+    // 1s beschreibt die Keyframezeit, steps() beschreibt in wievielen Sprüngen und infinite läst die Animation wiederholen
+    animation: moveAvatar 1s steps(8) infinite;
+    // Wichtig!
+    position: absolute;
+}
+
+.Levi {
+    // 1s beschreibt die Keyframezeit, steps() beschreibt in wievielen Sprüngen und infinite läst die Animation wiederholen
+    animation: moveAvatar 1s steps(8) infinite;
+    // Wichtig!
+    position: absolute;
+}
+
+.moveDown {
+    top: -256px;
+}
+
+.moveUp {
+    top: -512px;
+}
+
+.moveRight {
+    top: -768px;
+}
+
+.moveLeft{
+    top: -1024px;
+}
+
+// Dieses Keyframe bewegt wiederholend estwas nach links
 @keyframes moveAvatar {
     from {
         transform: translate3d(0px,0,0);
