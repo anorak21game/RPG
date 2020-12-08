@@ -3,7 +3,7 @@ body {
     background-color: #96ffc1;
 }
 
-.Avatar {
+.player__figure {
     // Reduziert das PNG auf 256px x 256px
     width: 256px;
     height: 256px;
@@ -15,33 +15,19 @@ body {
     margin: 0 auto;
 }
 
-.Lars {
+.player__image {
     // 1s beschreibt die Keyframezeit, steps() beschreibt in wievielen Sprüngen und infinite läst die Animation wiederholen
     animation: moveAvatar 1s steps(8) infinite;
     // Wichtig!
     position: absolute;
-}
-
-.Lenny {
-    // 1s beschreibt die Keyframezeit, steps() beschreibt in wievielen Sprüngen und infinite läst die Animation wiederholen
-    animation: moveAvatar 1s steps(8) infinite;
-    // Wichtig!
-    position: absolute;
-}
-
-.Levi {
-    // 1s beschreibt die Keyframezeit, steps() beschreibt in wievielen Sprüngen und infinite läst die Animation wiederholen
-    animation: moveAvatar 1s steps(8) infinite;
-    // Wichtig!
-    position: absolute;
-}
-
-.moveDown {
-    top: -256px;
 }
 
 .moveUp {
     top: -512px;
+}
+
+.moveDown {
+    top: -256px;
 }
 
 .moveRight {
