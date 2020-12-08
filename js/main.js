@@ -4,15 +4,15 @@
 var player = document.querySelector(".player__image");
 
 // Set default player
-if (player.currentSrc == "")    player.src = "asset/avatar/Lars.png";
+if (player.currentSrc == "")    player.src = "https://anorak21game.github.io/RPG/asset/avatar/Lars.png";
 
 // Select player
 document.addEventListener("keypress", checkPlayer, false);
 function checkPlayer(key){
 
-    if (key.keyCode == "49")    player.src = "asset/avatar/Lars.png";
-    if (key.keyCode == "50")    player.src = "asset/avatar/Lenny.png";
-    if (key.keyCode == "51")    player.src = "asset/avatar/Levi.png";
+    if (key.keyCode == "49")    player.src = "https://anorak21game.github.io/RPG/asset/avatar/Lars.png";
+    if (key.keyCode == "50")    player.src = "https://anorak21game.github.io/RPG/asset/avatar/Lenny.png";
+    if (key.keyCode == "51")    player.src = "https://anorak21game.github.io/RPG/asset/avatar/Levi.png";
 }
 
 // Move player
