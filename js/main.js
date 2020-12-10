@@ -39,5 +39,4 @@ document.addEventListener("keyup", checkStay, false);
 function checkStay(){
 
     player.classList.remove("player__move");
-    player.classList.add("player__stay");
 }
