@@ -1,7 +1,6 @@
 "use strict"
 
-// Default player
-var player = document.querySelector(".player__stay");
+// Default player - KOMMT WEG WENN WIR EIN MENÜ HABEN !!!
 player.src = "https://anorak21game.github.io/RPG/asset/avatar/Lars.png";
 
 // Select player

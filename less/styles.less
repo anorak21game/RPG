@@ -1,20 +1,3 @@
-// Setzt die Hintergrundfarbe
-body {
-    background-color: #96ffc1;
-}
-
-.player__figure {
-    // Reduziert das PNG auf 256px x 256px
-    width: 256px;
-    height: 256px;
-    // Alles andere von dem PNG wird ausgeblendet
-    overflow: hidden;
-    // Wichtig!
-    position: relative;
-    // Gibt an wo sich der Avatar im Bild befindet
-    margin: 0 auto;
-}
-
 .player__move {
     // 1s beschreibt die Keyframezeit, steps() beschreibt in wievielen Sprüngen und infinite läst die Animation wiederholen
     animation: moveAvatar 1s steps(8) infinite;
