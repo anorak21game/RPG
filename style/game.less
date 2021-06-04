@@ -1,0 +1,55 @@
+
+/* PLAYER */
+.player{
+    width: 256px; 
+    height: 256px; 
+    overflow: hidden; 
+    position: relative; 
+    margin: 0 auto;
+    &__{
+        &walk{
+            animation: moveAvatar 1s steps(8) infinite;
+            position: absolute;
+            &--{
+                &up{
+                    top: -512px;
+                }
+                &down{
+                    top: -256px;
+                }
+                &right{
+                    top: -768px;
+                }
+                &left{
+                    top: -1024px;
+                }
+            }
+        }
+        &stop {
+            position: absolute;
+            &--{
+                &up{
+                    top: -512px;
+                }
+                &down{
+                    top: -256px;
+                }
+                &right{
+                    top: -768px;
+                }
+                &left{
+                    top: -1024px;
+                }
+            }
+        }
+    }
+}
+
+@keyframes movePlayer {
+    from {
+        transform: translate3d(0px,0,0);
+    }
+    to {
+        transform: translate3d(-100%,0,0);
+    }
+}
