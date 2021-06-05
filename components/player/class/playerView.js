@@ -1,5 +1,9 @@
-export class PlayerView {
+import { GameView } from "../../../functions/gameView.js";
+
+export class PlayerView extends GameView {
     constructor() {
+        super();
+
         this.player = document.getElementById("player");
         this.player.className = "player";
         this.image = document.createElement("img");
