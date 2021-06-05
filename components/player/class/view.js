@@ -3,8 +3,6 @@ export class PlayerView {
         this.player = document.getElementById("player");
         this.player.className = "player";
         this.image = document.createElement("img");
-        this.image.className = "player__stop--down";
-        this.image.src = "components/player/assets/lars.png"; 
         this.player.append(this.image);
     }
 }
