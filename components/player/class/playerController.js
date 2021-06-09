@@ -3,8 +3,9 @@ export class PlayerController {
       this.view = view
       this.model = model
 
-      this.view.image.src = this.model.spritesheet; 
-      this.view.image.className = this.model.walk;
+      this.model.selectPlayer('lenny');
+      this.view.image.src = this.model.status.spritesheet; 
+      this.view.image.className = this.model.status.walk;
     }
 }
 
