@@ -1,14 +1,39 @@
-import { GameView } from "../../../functions/gameView.js";
+import { Crud } from '../../../library/crud.js';
 
-export class PlayerView extends GameView {
-    constructor() {
-        super();
+class Model extends Crud {
+  constructor() {
+    super();
 
-        this.player = document.getElementById("player");
-        this.player.className = "player";
-        this.image = document.createElement("img");
-        this.player.append(this.image);
+    this.status = {
+      spritesheet: 'components/player/asset/lars.png',
+      walk: 'player__stop--down'
     }
+  }
+}
+
+class View {
+  constructor() {
+    // super();
+
+    this.player = document.getElementById("player");
+    this.player.className = "player";
+    this.image = document.createElement("img");
+    this.player.append(this.image);
+  }
+
+  selectPlayer(expr) {
+    switch (expr) {
+      case 'lars':
+        this.status.spritesheet = 'components/player/asset/lars.png';
+        break;
+      case 'lenny':
+        this.status.spritesheet = 'components/player/asset/lenny.png';
+        break;
+      case 'levi':
+        this.status.spritesheet = 'components/player/asset/levi.png';
+        break;
+    }
+  }
 }
 
 // const playerView = document.createElement('template');
@@ -36,3 +61,15 @@ export class PlayerView extends GameView {
 //     if (playerModel.walk == "walkRight") playerModel.walk = "stopRight";
 //     if (playerModel.walk == "walkLeft") playerModel.walk = "stopLeft";
 // }
+
+class Controller {
+  constructor(view, model) {
+    this.view = view
+    this.model = model
+
+    this.view.image.src = this.model.status.spritesheet;
+    this.view.image.className = this.model.status.walk;
+  }
+}
+
+const player = new Controller(new View(), new Model());

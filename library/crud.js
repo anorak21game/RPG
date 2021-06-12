@@ -1,4 +1,4 @@
-export class GameModel {
+export class Crud {
     constructor() {
         
     }
