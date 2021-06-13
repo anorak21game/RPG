@@ -1,39 +1,48 @@
-import { Crud } from '../../../library/crud.js';
 
-class Model extends Crud {
+class Model {
   constructor() {
-    super();
-
     this.status = {
       spritesheet: 'components/player/asset/lars.png',
-      walk: 'player__stop--down'
+      walk: 'player__stop--down',
     }
   }
+
+  getPlayerSrc(src) {
+    src = this.status.spritesheet;
+  };
 }
 
 class View {
   constructor() {
-    // super();
-
     this.player = document.getElementById("player");
     this.player.className = "player";
     this.image = document.createElement("img");
     this.player.append(this.image);
   }
 
-  selectPlayer(expr) {
-    switch (expr) {
-      case 'lars':
-        this.status.spritesheet = 'components/player/asset/lars.png';
-        break;
-      case 'lenny':
-        this.status.spritesheet = 'components/player/asset/lenny.png';
-        break;
-      case 'levi':
-        this.status.spritesheet = 'components/player/asset/levi.png';
-        break;
-    }
+  bindGetPlayerSrc(handler) {    
+    document.addEventListener('keypress', (event) => {
+      event.preventDefault()
+
+      if (event.key == '1') {
+        handler(this.player.spritesheet);
+      }
+    })
   }
+  
+  // selectPlayer(expr) {
+  //   switch (expr) {
+  //     case 'lars':
+  //       this.status.spritesheet = 'components/player/asset/lars.png';
+  //       break;
+  //     case 'lenny':
+  //       this.status.spritesheet = 'components/player/asset/lenny.png';
+  //       break;
+  //     case 'levi':
+  //       this.status.spritesheet = 'components/player/asset/levi.png';
+  //       break;
+  //   }
+  // }
 }
 
 // const playerView = document.createElement('template');
@@ -67,9 +76,14 @@ class Controller {
     this.view = view
     this.model = model
 
-    this.view.image.src = this.model.status.spritesheet;
-    this.view.image.className = this.model.status.walk;
+    this.view.image.src = this.model.status.spritesheet
+    this.view.image.className = this.model.status.walk
+
+    this.view.bindGetPlayerSrc(this.handleGetPlayerSrc)
   }
+
+  handleGetPlayerSrc = src => this.model.getPlayerSrc(src);
+
 }
 
 const player = new Controller(new View(), new Model());
