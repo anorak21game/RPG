@@ -7,8 +7,9 @@ class Model {
     }
   }
 
-  getPlayerSrc(src) {
-    src = this.status.spritesheet;
+  getPlayer() {
+    console.log(this.status.spritesheet);
+    return this.status.spritesheet;
   };
 }
 
@@ -20,16 +21,33 @@ class View {
     this.player.append(this.image);
   }
 
-  bindGetPlayerSrc(handler) {    
-    document.addEventListener('keypress', (event) => {
-      event.preventDefault()
-
-      if (event.key == '1') {
-        handler(this.player.spritesheet);
-      }
-    })
+  bindGetPlayer(handler) {
+    this.image.src = handler;
   }
-  
+}
+
+class Controller {
+  constructor(view, model) {
+    this.view = view
+    this.model = model
+
+    this.view.bindGetPlayer(this.model.getPlayer())
+    this.view.image.className = this.model.status.walk
+  }
+}
+
+const player = new Controller(new View(), new Model());
+
+
+
+  //   document.addEventListener('keypress', (event) => {
+  //     event.preventDefault()
+
+  //     if (event.key == '1') {
+  //       this.player.src = handler;
+  //     }
+  //   })
+
   // selectPlayer(expr) {
   //   switch (expr) {
   //     case 'lars':
@@ -43,7 +61,6 @@ class View {
   //       break;
   //   }
   // }
-}
 
 // const playerView = document.createElement('template');
 // playerView.innerHTML = ``;
@@ -70,20 +87,3 @@ class View {
 //     if (playerModel.walk == "walkRight") playerModel.walk = "stopRight";
 //     if (playerModel.walk == "walkLeft") playerModel.walk = "stopLeft";
 // }
-
-class Controller {
-  constructor(view, model) {
-    this.view = view
-    this.model = model
-
-    this.view.image.src = this.model.status.spritesheet
-    this.view.image.className = this.model.status.walk
-
-    this.view.bindGetPlayerSrc(this.handleGetPlayerSrc)
-  }
-
-  handleGetPlayerSrc = src => this.model.getPlayerSrc(src);
-
-}
-
-const player = new Controller(new View(), new Model());
