@@ -2,15 +2,10 @@
 class Model {
   constructor() {
     this.status = {
-      spritesheet: 'components/player/asset/lars.png',
+      player: 'components/player/asset/lars.png',
       walk: 'player__stop--down',
     }
   }
-
-  getPlayer() {
-    console.log(this.status.spritesheet);
-    return this.status.spritesheet;
-  };
 }
 
 class View {
@@ -21,56 +16,33 @@ class View {
     this.player.append(this.image);
   }
 
-  bindGetPlayer(handler) {
-    this.image.src = handler;
+  selectPlayer() {
+    document.addEventListener('keypress', (event) => {
+      event.preventDefault();
+      if (event.key == '1') this.image.src = 'components/player/asset/lars.png';
+      if (event.key == '2') this.image.src = 'components/player/asset/levi.png';
+      if (event.key == '3') this.image.src = 'components/player/asset/lenny.png';
+    })
   }
 }
 
 class Controller {
   constructor(view, model) {
-    this.view = view
-    this.model = model
+    this.view = view;
+    this.model = model;
 
-    this.view.bindGetPlayer(this.model.getPlayer())
-    this.view.image.className = this.model.status.walk
+    this.view.image.src = this.model.status.player;
+    this.view.image.className = this.model.status.walk;
+
+    this.view.selectPlayer();
   }
 }
 
 const player = new Controller(new View(), new Model());
+console.log(player);
 
 
 
-  //   document.addEventListener('keypress', (event) => {
-  //     event.preventDefault()
-
-  //     if (event.key == '1') {
-  //       this.player.src = handler;
-  //     }
-  //   })
-
-  // selectPlayer(expr) {
-  //   switch (expr) {
-  //     case 'lars':
-  //       this.status.spritesheet = 'components/player/asset/lars.png';
-  //       break;
-  //     case 'lenny':
-  //       this.status.spritesheet = 'components/player/asset/lenny.png';
-  //       break;
-  //     case 'levi':
-  //       this.status.spritesheet = 'components/player/asset/levi.png';
-  //       break;
-  //   }
-  // }
-
-// const playerView = document.createElement('template');
-// playerView.innerHTML = ``;
-
-// document.addEventListener('keypress', selectPlayer, true);
-// function selectPlayer(key) {
-//     if (key.keyCode == '49') playerModel.player = "components/player/asset/Lars.png";
-//     if (key.keyCode == '50') playerModel.player = "components/player/asset/Lenny.png";
-//     if (key.keyCode == '51') playerModel.player = "components/player/asset/Levi.png";
-// }
 
 // document.addEventListener("keydown", movePlayer, true);
 // function movePlayer(key) {

@@ -1,4 +1,4 @@
-export class Crud {
+export class Something {
     constructor() {
         
     }
