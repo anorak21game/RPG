@@ -1,14 +1,21 @@
+import { Events } from '../../../library/events.js';
 
-class Model {
+class Status {
   constructor() {
-    this.status = {
+    this.values = {
       player: 'components/player/asset/lars.png',
       walk: 'player__stop--down',
     }
   }
+
+  getPlayer()           { return this.values.player; }
+  getWalk()             { return this.values.walk; }
+
+  setPlayer(value)      { this.values.player = value; }
+  setWalk(value)        { this.values.player = value; }
 }
 
-class View {
+class Body {
   constructor() {
     this.player = document.getElementById("player");
     this.player.className = "player";
@@ -16,29 +23,31 @@ class View {
     this.player.append(this.image);
   }
 
-  selectPlayer() {
-    document.addEventListener('keypress', (event) => {
-      event.preventDefault();
-      if (event.key == '1') this.image.src = 'components/player/asset/lars.png';
-      if (event.key == '2') this.image.src = 'components/player/asset/levi.png';
-      if (event.key == '3') this.image.src = 'components/player/asset/lenny.png';
-    })
+  setSrc(value)         { this.image.src = value; }
+  setClassName(value)   { this.image.className = value; }
+
+  // selectPlayer() {
+  //   document.addEventListener('keypress', (event) => {
+  //     event.preventDefault();
+  //     if (event.key == '1') this.image.src = 'components/player/asset/lars.png';
+  //     if (event.key == '2') this.image.src = 'components/player/asset/levi.png';
+  //     if (event.key == '3') this.image.src = 'components/player/asset/lenny.png';
+  //   })
+  // }
+}
+
+class Connector extends Events {
+  constructor(body, status) {
+    super();
+    this.body = body;
+    this.status = status;
+
+    this.body.setSrc(this.status.getPlayer());
+    this.body.setClassName(this.status.getWalk());
   }
 }
 
-class Controller {
-  constructor(view, model) {
-    this.view = view;
-    this.model = model;
-
-    this.view.image.src = this.model.status.player;
-    this.view.image.className = this.model.status.walk;
-
-    this.view.selectPlayer();
-  }
-}
-
-const player = new Controller(new View(), new Model());
+const player = new Connector(new Body(), new Status());
 console.log(player);
 
 
