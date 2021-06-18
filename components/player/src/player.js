@@ -1,55 +1,34 @@
-import { Events } from '../../../library/events.js';
+/* add player tags */
 
-class Player {
-  constructor() {
-    this.status = {
-      player: 'components/player/asset/lars.png',
-      walk: 'player__stop--down',
-    }
+let player = document.getElementById("player");
+player.className = "player";
+let image = document.createElement("img");
+player.append(image);
 
-    this.player = document.getElementById("player");
-    this.player.className = "player";
-    this.image = document.createElement("img");
-    this.player.append(this.image);
-  }
+image.src = 'components/player/asset/lars.png';
+image.className = 'player__stop--down';
 
-  selectPlayer() {
-    document.addEventListener('keypress', (event) => {
-      event.preventDefault();
-      if (event.key == '1') this.image.src = 'components/player/asset/lars.png';
-      if (event.key == '2') this.image.src = 'components/player/asset/levi.png';
-      if (event.key == '3') this.image.src = 'components/player/asset/lenny.png';
-    })
-  }
-}
+/* add events */
 
-class Execute extends Events {
-  constructor(player) {
-    super();
-    this.player = player;
+document.addEventListener('keypress', (event) => {
+  event.preventDefault();
+  if (event.key == '1') image.src = 'components/player/asset/lars.png';
+  if (event.key == '2') image.src = 'components/player/asset/levi.png';
+  if (event.key == '3') image.src = 'components/player/asset/lenny.png';
+});
 
-    this.player.selectPlayer();
-  }
-}
+document.addEventListener('keydown', (event) => {
+  event.preventDefault();
+  if (event.key == 'ArrowUp') image.className = 'player__walk--up';
+  if (event.key == 'ArrowDown') image.className = 'player__walk--down';
+  if (event.key == 'ArrowRight') image.className = 'player__walk--right';
+  if (event.key == 'ArrowLeft') image.className = 'player__walk--left';
+});
 
-const player = new Execute(new Player);
-console.log(player);
-
-
-
-
-// document.addEventListener("keydown", movePlayer, true);
-// function movePlayer(key) {
-//     if (key.keyCode == "38") playerModel.walk = "walkUp";
-//     if (key.keyCode == "40") playerModel.walk = "walkDown";
-//     if (key.keyCode == "39") playerModel.walk = "walkRight";
-//     if (key.keyCode == "37") playerModel.walk = "walkLeft";
-// }
-
-// document.addEventListener("keyup", stopPlayer, true);
-// function stopPlayer() {
-//     if (playerModel.walk == "walkUp") playerModel.walk = "stopUp";
-//     if (playerModel.walk == "walkDown") playerModel.walk = "stopDown";
-//     if (playerModel.walk == "walkRight") playerModel.walk = "stopRight";
-//     if (playerModel.walk == "walkLeft") playerModel.walk = "stopLeft";
-// }
+document.addEventListener('keyup', (event) => {
+  event.preventDefault();
+  if (event.key == 'ArrowUp') image.className = 'player__stop--up';
+  if (event.key == 'ArrowDown') image.className = 'player__stop--down';
+  if (event.key == 'ArrowRight') image.className = 'player__stop--right';
+  if (event.key == 'ArrowLeft') image.className = 'player__stop--left';
+});
