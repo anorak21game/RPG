@@ -1,4 +1,4 @@
-/* add player tags */
+/* tags */
 
 let player = document.getElementById("player");
 player.className = "player";
@@ -8,7 +8,7 @@ player.append(image);
 image.src = 'asset/lars.png';
 image.className = 'player__stop--down';
 
-/* add events */
+/* controller */
 
 document.addEventListener('keydown', (event) => {
   event.preventDefault();
